@@ -1,0 +1,16 @@
+[Unit]
+Description=Gunicorn service for Molla (furni project)
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/var/www/furni
+ExecStart=/var/www/furni/venv/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/run/gunicorn.sock \
+          core.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
