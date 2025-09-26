@@ -1,0 +1,11 @@
+#systemd konfiguratsiyasini qayta yuklash
+sudo systemctl daemon-reload
+
+#gunicorn xizmatini qayta ishga tushirish
+sudo systemctl restart gunicorn
+
+#holatini ko‘rish (ishga tushdimi yo‘qmi tekshirish)
+sudo systemctl status gunicorn
+
+#oxirida nginx ni ham qayta ishga tushrish
+sudo systemctl restart nginx
