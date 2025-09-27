@@ -1,11 +1,38 @@
-#systemd konfiguratsiyasini qayta yuklash
+#1-Yangilanishlarni olish --> GitHub/GitLab dan eng so‘nggi kodlarni olib keladi.
+git pull origin main
+
+
+#faylni ichiga kirish --> Loyihaning papkasiga o‘tasiz.
+cd /var/www/furni #("proyeky_name")
+
+
+#Virtual environment’ni aktiv qilish --> Shunda python va pip sizning proyektga tegishli bo‘ladi.
+source venv/bin/activate
+
+
+#Migratsiyalarni qo‘llash --> Ma’lumotlar bazasini yangilaydi
+python manage.py migrate
+
+
+#Tarjimalarni kompilyatsiya qilish (agar .po fayllar bo‘lsa) --> .po fayllardan .mo fayllar yaratadi.
+python manage.py compilemessages
+
+
+#systemd konfiguratsiyasini qayta yuklash --> Agar gunicorn.service faylida o‘zgarish bo‘lsa, systemd qayta yuklanadi.
 sudo systemctl daemon-reload
 
-#gunicorn xizmatini qayta ishga tushirish
+
+#Gunicorn xizmatini qayta ishga tushirish --> Django loyihangizni WSGI orqali qaytadan ishga tushiradi.
 sudo systemctl restart gunicorn
 
-#holatini ko‘rish (ishga tushdimi yo‘qmi tekshirish)
+
+#holatini ko‘rish (ishga tushdimi yo‘qmi tekshirish) --> active (running) bo‘lsa, hammasi joyida
 sudo systemctl status gunicorn
 
-#oxirida nginx ni ham qayta ishga tushrish
+
+#oxirida nginx ni ham qayta ishga tushrish --> Nginx qayta ishga tushadi va yangi Gunicorn’ga ulanadi.
 sudo systemctl restart nginx
+
+
+#holatini ko‘rish (ishga tushdimi yo‘qmi tekshirish) --> active (running) bo'lsa, hammsi joyida.
+sudo systemctl status nginx
