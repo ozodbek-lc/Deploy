@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name 164.90.175.195;
+    server_name 164.90.175.195 furnitica.uz;
 
     location = /favicon.ico { access_log off; log_not_found off; }
 
