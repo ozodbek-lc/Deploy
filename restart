@@ -1,13 +1,16 @@
-#1-Yangilanishlarni olish --> GitHub/GitLab dan eng so‘nggi kodlarni olib keladi.
-git pull origin main
-
-
 #faylni ichiga kirish --> Loyihaning papkasiga o‘tasiz.
 cd /var/www/furni #("proyeky_name")
 
 
 #Virtual environment’ni aktiv qilish --> Shunda python va pip sizning proyektga tegishli bo‘ladi.
 source venv/bin/activate
+
+#Install ni yangilash -->
+pip install -r requirements.txt <--> pip freeze > requirements.txt
+
+
+#Yangilanishlarni olish --> GitHub/GitLab dan eng so‘nggi kodlarni olib keladi.
+git pull origin main
 
 
 #Migratsiyalarni qo‘llash --> Ma’lumotlar bazasini yangilaydi
